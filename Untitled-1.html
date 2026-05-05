@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vasudha Geoanalytics | Geospatial Intelligence for a Better World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --earth-900: #0d1f0e;
+    --earth-800: #1a3a1c;
+    --earth-700: #24522a;
+    --earth-600: #2e6835;
+    --earth-500: #3a8444;
+    --earth-400: #5aaa69;
+    --earth-300: #88c994;
+    --earth-200: #b8dfc0;
+    --earth-100: #e4f2e7;
+    --teal-600: #0f7c6e;
+    --teal-400: #1bb8a3;
+    --teal-200: #a3e4dc;
+    --amber-500: #c97c1a;
+    --amber-300: #e8b96a;
+    --sand-100: #f5f0e8;
+    --sand-200: #e8dece;
+    --white: #ffffff;
+    --gray-900: #111714;
+    --gray-700: #2e3a31;
+    --gray-500: #5c6b60;
+    --gray-300: #a3b0a7;
+    --gray-100: #f0f4f1;
+    --accent: #3a8444;
+    --accent-bright: #5aaa69;
+    --font-display: 'DM Serif Display', serif;
+    --font-body: 'Outfit', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--earth-900);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(13, 31, 14, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(90,170,105,0.15);
+    transition: background 0.3s;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.75rem; text-decoration: none;
+  }
+  .nav-logo .logo-mark {
+    width: 38px; height: 38px;
+    background: var(--earth-600);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .nav-logo .logo-mark svg { width: 22px; height: 22px; }
+  .nav-logo .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-logo .logo-text strong {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--earth-200);
+    letter-spacing: 0.01em;
+  }
+  .nav-logo .logo-text span {
+    font-size: 0.6rem;
+    color: var(--earth-400);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--earth-200); text-decoration: none; font-size: 0.9rem;
+    font-weight: 500; letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--earth-400); }
+  .nav-cta {
+    background: var(--earth-600); color: var(--white) !important;
+    padding: 0.55rem 1.4rem; border-radius: 6px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--earth-500) !important; color: var(--white) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--earth-300); border-radius: 2px; transition: 0.3s; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative;
+    padding: 8rem 5% 5rem;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(46,104,53,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 20% 70%, rgba(15,124,110,0.2) 0%, transparent 60%),
+      var(--earth-900);
+  }
+  .topo-lines {
+    position: absolute; inset: 0; z-index: 0;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Ccircle cx='100' cy='100' r='90' fill='none' stroke='%235aaa69' stroke-width='1'/%3E%3Ccircle cx='100' cy='100' r='70' fill='none' stroke='%235aaa69' stroke-width='1'/%3E%3Ccircle cx='100' cy='100' r='50' fill='none' stroke='%235aaa69' stroke-width='1'/%3E%3Ccircle cx='100' cy='100' r='30' fill='none' stroke='%235aaa69' stroke-width='1'/%3E%3Ccircle cx='100' cy='100' r='10' fill='none' stroke='%235aaa69' stroke-width='1'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0; opacity: 0.04;
+    background-image: linear-gradient(var(--earth-400) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--earth-400) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  .hero-content {
+    position: relative; z-index: 1;
+    max-width: 680px;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(58,132,68,0.2); border: 1px solid rgba(90,170,105,0.4);
+    color: var(--earth-300); font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 0.45rem 1rem; border-radius: 100px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-badge::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--earth-400);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+  h1.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    line-height: 1.08;
+    color: var(--earth-100);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  h1.hero-title em {
+    font-style: italic;
+    color: var(--earth-400);
+  }
+  .hero-desc {
+    font-size: 1.1rem; line-height: 1.75;
+    color: var(--earth-200);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--earth-600); color: var(--white);
+    padding: 0.85rem 2rem; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--earth-500); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid rgba(90,170,105,0.5); color: var(--earth-300);
+    padding: 0.85rem 2rem; border-radius: 8px;
+    text-decoration: none; font-weight: 500; font-size: 0.95rem;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--earth-400); color: var(--earth-200); transform: translateY(-2px); }
+  .hero-stats {
+    position: relative; z-index: 1;
+    margin-top: 5rem;
+    display: flex; gap: 3rem;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat-num {
+    font-family: var(--font-display); font-size: 2.2rem;
+    color: var(--earth-300); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem; color: var(--earth-500);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-top: 0.3rem;
+  }
+
+  .hero-visual {
+    position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+    z-index: 1; opacity: 0.75;
+    animation: floatIn 1s 0.5s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes floatIn {
+    from { opacity: 0; transform: translateY(-40%) scale(0.9); }
+    to { opacity: 0.75; transform: translateY(-50%) scale(1); }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 6rem 5%; }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--earth-400);
+    margin-bottom: 0.75rem;
+  }
+  h2.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--earth-100); line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+  h2.section-title em { font-style: italic; color: var(--earth-400); }
+  .section-desc {
+    font-size: 1rem; color: var(--earth-300);
+    line-height: 1.8; max-width: 560px;
+    font-weight: 300;
+  }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--earth-800); }
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+  .about-image {
+    position: relative;
+  }
+  .about-img-box {
+    background: var(--earth-700);
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(90,170,105,0.2);
+  }
+  .about-img-box svg { width: 80%; height: 80%; opacity: 0.6; }
+  .about-chip {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    background: var(--teal-600); color: var(--white);
+    border-radius: 12px; padding: 1.25rem 1.5rem;
+    text-align: center;
+  }
+  .about-chip strong { display: block; font-size: 1.8rem; font-family: var(--font-display); }
+  .about-chip span { font-size: 0.75rem; opacity: 0.85; }
+  .about-pillars {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-top: 2rem;
+  }
+  .pillar {
+    background: rgba(58,132,68,0.1);
+    border: 1px solid rgba(90,170,105,0.15);
+    border-radius: 10px; padding: 1rem 1.2rem;
+  }
+  .pillar-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .pillar h4 { font-size: 0.9rem; color: var(--earth-200); font-weight: 600; margin-bottom: 0.25rem; }
+  .pillar p { font-size: 0.82rem; color: var(--earth-400); line-height: 1.5; }
+
+  /* ─── FOCUS AREAS ─── */
+  #focus { background: var(--earth-900); }
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem; margin-top: 3rem;
+  }
+  .focus-card {
+    background: var(--earth-800);
+    border: 1px solid rgba(90,170,105,0.12);
+    border-radius: 14px; padding: 2rem 1.75rem;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+  }
+  .focus-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--earth-600), var(--teal-600));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .focus-card:hover { border-color: rgba(90,170,105,0.35); transform: translateY(-4px); }
+  .focus-card:hover::before { transform: scaleX(1); }
+  .focus-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(46,104,53,0.35);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem; font-size: 1.4rem;
+  }
+  .focus-card h3 { font-size: 1rem; color: var(--earth-100); font-weight: 600; margin-bottom: 0.6rem; }
+  .focus-card p { font-size: 0.85rem; color: var(--earth-400); line-height: 1.65; }
+  .focus-tag {
+    display: inline-block; margin-top: 1rem;
+    background: rgba(58,132,68,0.2); color: var(--earth-300);
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.75rem; border-radius: 100px;
+  }
+
+  /* ─── SERVICES ─── */
+  #services { background: var(--earth-800); }
+  .services-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; margin-top: 3rem; }
+  .service-list { display: flex; flex-direction: column; gap: 0; }
+  .service-item {
+    display: flex; gap: 1.25rem; padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(90,170,105,0.1);
+    cursor: pointer; transition: 0.2s;
+  }
+  .service-item:first-child { padding-top: 0; }
+  .service-num {
+    font-family: var(--font-mono); font-size: 0.7rem;
+    color: var(--earth-600); padding-top: 0.2rem;
+    flex-shrink: 0; width: 28px;
+  }
+  .service-info h3 { font-size: 1rem; color: var(--earth-100); font-weight: 600; margin-bottom: 0.35rem; }
+  .service-info p { font-size: 0.85rem; color: var(--earth-500); line-height: 1.6; }
+  .service-visual {
+    background: var(--earth-700);
+    border: 1px solid rgba(90,170,105,0.15);
+    border-radius: 16px; padding: 2.5rem;
+    position: sticky; top: 100px;
+  }
+  .service-visual h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--earth-100); margin-bottom: 1rem; }
+  .service-visual p { font-size: 0.9rem; color: var(--earth-300); line-height: 1.75; margin-bottom: 1.5rem; }
+  .service-features { display: flex; flex-direction: column; gap: 0.6rem; }
+  .service-feat {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.85rem; color: var(--earth-200);
+  }
+  .service-feat::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--earth-500); flex-shrink: 0;
+  }
+
+  /* ─── PRODUCTS ─── */
+  #products { background: var(--earth-900); }
+  .products-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .product-card {
+    background: var(--earth-800);
+    border: 1px solid rgba(90,170,105,0.12);
+    border-radius: 16px; overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .product-card:hover { transform: translateY(-5px); border-color: rgba(90,170,105,0.35); }
+  .product-header {
+    padding: 1.75rem 1.75rem 1.25rem;
+    background: linear-gradient(135deg, rgba(46,104,53,0.3), rgba(15,124,110,0.2));
+    border-bottom: 1px solid rgba(90,170,105,0.1);
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .product-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: rgba(58,132,68,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; flex-shrink: 0;
+  }
+  .product-header h3 { font-size: 1.05rem; color: var(--earth-100); font-weight: 600; }
+  .product-header span { font-size: 0.75rem; color: var(--earth-400); margin-top: 0.2rem; display: block; }
+  .product-body { padding: 1.5rem 1.75rem; }
+  .product-body p { font-size: 0.87rem; color: var(--earth-400); line-height: 1.7; margin-bottom: 1.25rem; }
+  .product-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    background: rgba(58,132,68,0.15); color: var(--earth-300);
+    font-size: 0.72rem; font-weight: 500;
+    padding: 0.3rem 0.7rem; border-radius: 6px;
+    border: 1px solid rgba(90,170,105,0.2);
+  }
+
+  /* ─── WHY US ─── */
+  #why { background: var(--earth-800); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .why-card { text-align: center; padding: 2rem 1rem; }
+  .why-num {
+    font-family: var(--font-display); font-size: 3.5rem;
+    color: var(--earth-700); line-height: 1;
+    position: relative; display: inline-block;
+  }
+  .why-num span {
+    font-size: 1.5rem; color: var(--earth-600);
+    vertical-align: super;
+  }
+  .why-card h3 { font-size: 0.95rem; color: var(--earth-100); font-weight: 600; margin: 0.75rem 0 0.5rem; }
+  .why-card p { font-size: 0.82rem; color: var(--earth-500); line-height: 1.6; }
+
+  /* ─── TEAM ─── */
+  #team { background: var(--earth-900); }
+  .team-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .team-card {
+    background: var(--earth-800);
+    border: 1px solid rgba(90,170,105,0.1);
+    border-radius: 14px; padding: 2rem 1.5rem;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .team-card:hover { transform: translateY(-4px); border-color: rgba(90,170,105,0.3); }
+  .avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--earth-700);
+    margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 1.5rem;
+    color: var(--earth-300);
+    border: 2px solid rgba(90,170,105,0.2);
+  }
+  .team-card h3 { font-size: 0.95rem; color: var(--earth-100); font-weight: 600; margin-bottom: 0.3rem; }
+  .team-card .role { font-size: 0.78rem; color: var(--earth-400); margin-bottom: 0.75rem; }
+  .team-card .bio { font-size: 0.8rem; color: var(--earth-500); line-height: 1.6; }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--earth-800); }
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start;
+  }
+  .contact-info { padding-top: 1rem; }
+  .contact-info .section-desc { margin-bottom: 2rem; }
+  .contact-detail {
+    display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;
+  }
+  .contact-detail-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: rgba(58,132,68,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-detail h4 { font-size: 0.8rem; color: var(--earth-500); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem; }
+  .contact-detail p, .contact-detail a { font-size: 0.92rem; color: var(--earth-200); text-decoration: none; }
+  .contact-form {
+    background: var(--earth-700);
+    border: 1px solid rgba(90,170,105,0.15);
+    border-radius: 16px; padding: 2.5rem;
+  }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  label {
+    display: block; font-size: 0.8rem; color: var(--earth-300);
+    font-weight: 500; margin-bottom: 0.5rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  input, select, textarea {
+    width: 100%;
+    background: var(--earth-800);
+    border: 1px solid rgba(90,170,105,0.2);
+    border-radius: 8px; padding: 0.8rem 1rem;
+    color: var(--earth-100);
+    font-family: var(--font-body); font-size: 0.9rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--earth-500);
+  }
+  input::placeholder, textarea::placeholder { color: var(--earth-600); }
+  select option { background: var(--earth-800); }
+  textarea { resize: vertical; min-height: 120px; }
+  .btn-submit {
+    width: 100%; padding: 0.9rem;
+    background: var(--earth-600); color: var(--white);
+    border: none; border-radius: 8px;
+    font-family: var(--font-body); font-size: 0.95rem;
+    font-weight: 600; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .btn-submit:hover { background: var(--earth-500); transform: translateY(-1px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--earth-900);
+    border-top: 1px solid rgba(90,170,105,0.1);
+    padding: 4rem 5% 2rem;
+  }
+  .footer-inner {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 3rem;
+  }
+  .footer-brand .logo-text strong { font-size: 1.2rem; }
+  .footer-desc { font-size: 0.85rem; color: var(--earth-500); line-height: 1.7; margin: 1rem 0 1.5rem; }
+  .social-links { display: flex; gap: 0.75rem; }
+  .social-link {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--earth-800);
+    border: 1px solid rgba(90,170,105,0.15);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--earth-400); text-decoration: none; font-size: 0.85rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .social-link:hover { background: var(--earth-700); color: var(--earth-200); }
+  .footer-col h4 {
+    font-size: 0.78rem; color: var(--earth-300);
+    text-transform: uppercase; letter-spacing: 0.12em;
+    font-weight: 600; margin-bottom: 1rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.6rem; }
+  .footer-col ul li a {
+    font-size: 0.87rem; color: var(--earth-500);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--earth-300); }
+  .footer-bottom {
+    border-top: 1px solid rgba(90,170,105,0.08);
+    padding-top: 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-bottom p { font-size: 0.8rem; color: var(--earth-600); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .about-inner, .services-layout, .contact-inner, .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-visual { display: none; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .about-chip { bottom: -1rem; right: 0.5rem; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    h1.hero-title { font-size: 2.4rem; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="11" r="9" stroke="#88c994" stroke-width="1.5"/>
+        <circle cx="11" cy="11" r="5.5" stroke="#88c994" stroke-width="1.5"/>
+        <circle cx="11" cy="11" r="2" fill="#88c994"/>
+        <line x1="11" y1="2" x2="11" y2="4" stroke="#5aaa69" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="18" x2="11" y2="20" stroke="#5aaa69" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="2" y1="11" x2="4" y2="11" stroke="#5aaa69" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="18" y1="11" x2="20" y2="11" stroke="#5aaa69" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <strong>Vasudha</strong>
+      <span>Geoanalytics</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#focus">Focus Areas</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu(this)">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="topo-lines"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Geospatial Intelligence</div>
+    <h1 class="hero-title">Mapping the future of <em>Earth & Society</em></h1>
+    <p class="hero-desc">
+      Vasudha Geoanalytics develops cutting-edge software, web & mobile applications, and analytical tools powered by geospatial technology — driving smarter decisions in agriculture, water, forests, public health, climate, and more.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Explore Our Solutions</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <svg width="420" height="420" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="210" cy="210" r="200" stroke="#2e6835" stroke-width="1" stroke-dasharray="4 6"/>
+      <circle cx="210" cy="210" r="160" stroke="#2e6835" stroke-width="0.75" stroke-dasharray="3 8"/>
+      <circle cx="210" cy="210" r="120" stroke="#3a8444" stroke-width="1"/>
+      <circle cx="210" cy="210" r="80" stroke="#3a8444" stroke-width="0.75"/>
+      <circle cx="210" cy="210" r="40" stroke="#5aaa69" stroke-width="1.5"/>
+      <circle cx="210" cy="210" r="8" fill="#5aaa69"/>
+      <!-- horizontal/vertical lines -->
+      <line x1="10" y1="210" x2="410" y2="210" stroke="#2e6835" stroke-width="0.5"/>
+      <line x1="210" y1="10" x2="210" y2="410" stroke="#2e6835" stroke-width="0.5"/>
+      <!-- data points -->
+      <circle cx="290" cy="130" r="5" fill="#1bb8a3" opacity="0.9"/>
+      <circle cx="145" cy="165" r="4" fill="#5aaa69" opacity="0.9"/>
+      <circle cx="310" cy="270" r="6" fill="#5aaa69" opacity="0.8"/>
+      <circle cx="120" cy="300" r="4" fill="#1bb8a3" opacity="0.7"/>
+      <circle cx="265" cy="340" r="3" fill="#5aaa69" opacity="0.7"/>
+      <circle cx="180" cy="90" r="4" fill="#1bb8a3" opacity="0.8"/>
+      <!-- connecting lines -->
+      <line x1="210" y1="210" x2="290" y2="130" stroke="#5aaa69" stroke-width="0.75" opacity="0.5"/>
+      <line x1="210" y1="210" x2="145" y2="165" stroke="#5aaa69" stroke-width="0.75" opacity="0.5"/>
+      <line x1="210" y1="210" x2="310" y2="270" stroke="#1bb8a3" stroke-width="0.75" opacity="0.5"/>
+      <line x1="210" y1="210" x2="120" y2="300" stroke="#1bb8a3" stroke-width="0.75" opacity="0.5"/>
+      <line x1="290" y1="130" x2="145" y2="165" stroke="#3a8444" stroke-width="0.5" opacity="0.4"/>
+      <line x1="145" y1="165" x2="120" y2="300" stroke="#3a8444" stroke-width="0.5" opacity="0.4"/>
+      <!-- coordinates  -->
+      <text x="290" y="115" font-size="8" fill="#5aaa69" font-family="Space Mono,monospace" opacity="0.8">16.5°N</text>
+      <text x="120" y="155" font-size="8" fill="#5aaa69" font-family="Space Mono,monospace" opacity="0.8">17.2°N</text>
+      <text x="315" y="268" font-size="8" fill="#1bb8a3" font-family="Space Mono,monospace" opacity="0.8">80.6°E</text>
+    </svg>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">7<span style="font-size:1.2rem;color:var(--earth-500)">+</span></span><span class="stat-label">Focus Domains</span></div>
+    <div class="stat"><span class="stat-num">5<span style="font-size:1.2rem;color:var(--earth-500)">+</span></span><span class="stat-label">Service Lines</span></div>
+    <div class="stat"><span class="stat-num">100<span style="font-size:1.2rem;color:var(--earth-500)">%</span></span><span class="stat-label">Data-Driven</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-image">
+      <div class="about-img-box">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <!-- stylized satellite/earth illustration -->
+          <ellipse cx="200" cy="150" rx="130" ry="110" stroke="#3a8444" stroke-width="1.5"/>
+          <path d="M80 100 Q150 60 200 50 Q250 60 320 100" stroke="#5aaa69" stroke-width="1.2" fill="none"/>
+          <path d="M70 150 Q140 120 200 130 Q260 140 330 150" stroke="#5aaa69" stroke-width="1.2" fill="none"/>
+          <path d="M80 200 Q150 210 200 220 Q250 210 320 200" stroke="#5aaa69" stroke-width="1.2" fill="none"/>
+          <!-- patches -->
+          <path d="M120 80 Q150 70 180 90 Q170 120 140 115 Z" fill="#2e6835" opacity="0.6"/>
+          <path d="M220 60 Q260 55 280 80 Q265 105 230 95 Z" fill="#2e6835" opacity="0.5"/>
+          <path d="M95 150 Q120 135 150 150 Q145 185 110 180 Z" fill="#0f7c6e" opacity="0.5"/>
+          <path d="M250 160 Q280 145 310 165 Q300 195 265 185 Z" fill="#0f7c6e" opacity="0.4"/>
+          <path d="M155 195 Q195 185 225 200 Q215 230 175 225 Z" fill="#2e6835" opacity="0.6"/>
+          <!-- grid overlay -->
+          <line x1="70" y1="150" x2="330" y2="150" stroke="#5aaa69" stroke-width="0.5" opacity="0.3"/>
+          <line x1="200" y1="40" x2="200" y2="260" stroke="#5aaa69" stroke-width="0.5" opacity="0.3"/>
+          <!-- satellite orbit -->
+          <ellipse cx="200" cy="150" rx="175" ry="60" stroke="#1bb8a3" stroke-width="0.75" stroke-dasharray="5 4" opacity="0.5" transform="rotate(-30 200 150)"/>
+          <circle cx="320" cy="85" r="5" fill="#1bb8a3" opacity="0.8"/>
+          <!-- satellite body -->
+          <rect x="316" y="81" width="8" height="8" rx="1" fill="#1bb8a3" opacity="0.9"/>
+          <line x1="308" y1="85" x2="316" y2="85" stroke="#1bb8a3" stroke-width="1.5" opacity="0.8"/>
+          <line x1="324" y1="85" x2="332" y2="85" stroke="#1bb8a3" stroke-width="1.5" opacity="0.8"/>
+        </svg>
+      </div>
+      <div class="about-chip">
+        <strong>Est. 2024</strong>
+        <span>Vijayawada, India</span>
+      </div>
+    </div>
+    <div>
+      <p class="section-label">Who We Are</p>
+      <h2 class="section-title">Turning <em>geospatial data</em> into actionable insight</h2>
+      <p class="section-desc">
+        Vasudha Geoanalytics is a technology startup at the intersection of geospatial science and real-world impact. We build software solutions, analytical platforms, and value-added data products that help governments, organizations, and businesses make informed, location-aware decisions.
+      </p>
+      <p class="section-desc" style="margin-top:1rem;">
+        From satellite imagery analysis to sensor-based IoT data networks, our work spans the full spectrum of geospatial intelligence — always with a mission to create meaningful change for communities and the environment.
+      </p>
+      <div class="about-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🛰️</div>
+          <h4>Remote Sensing</h4>
+          <p>Satellite & aerial imagery processing and analysis</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📡</div>
+          <h4>IoT Networks</h4>
+          <p>Sensor-based data collection and dissemination</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🗺️</div>
+          <h4>GIS Platforms</h4>
+          <p>Custom spatial data infrastructure and tools</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📊</div>
+          <h4>Analytics & AI</h4>
+          <p>Machine learning models for geospatial data</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS AREAS -->
+<section id="focus">
+  <p class="section-label">Where We Work</p>
+  <h2 class="section-title">Our <em>Focus Areas</em></h2>
+  <p class="section-desc">We apply geospatial intelligence across seven critical domains that shape how our world functions.</p>
+  <div class="focus-grid">
+    <div class="focus-card">
+      <div class="focus-icon">🌾</div>
+      <h3>Agriculture</h3>
+      <p>Crop monitoring, yield prediction, precision farming, soil health mapping, and drought assessment using satellite and drone data.</p>
+      <span class="focus-tag">Crop Intelligence</span>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">💧</div>
+      <h3>Water Resources</h3>
+      <p>Watershed analysis, flood mapping, groundwater monitoring, irrigation management, and water quality assessment.</p>
+      <span class="focus-tag">Hydrological Mapping</span>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">🌲</div>
+      <h3>Forest Systems</h3>
+      <p>Forest cover change detection, biomass estimation, biodiversity mapping, and deforestation monitoring with real-time alerts.</p>
+      <span class="focus-tag">Biodiversity Monitoring</span>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">🏥</div>
+      <h3>Public Health</h3>
+      <p>Disease spread modeling, health facility accessibility, environmental health risk assessment, and epidemiological mapping.</p>
+      <span class="focus-tag">Health GIS</span>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">🌡️</div>
+      <h3>Climate Change</h3>
+      <p>Land surface temperature monitoring, carbon sequestration mapping, climate risk assessment, and vulnerability index modeling.</p>
+      <span class="focus-tag">Climate Analytics</span>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">🏙️</div>
+      <h3>Urban & Rural Systems</h3>
+      <p>Urban growth monitoring, land use change analysis, infrastructure planning, rural development, and smart city analytics.</p>
+      <span class="focus-tag">Spatial Planning</span>
+    </div>
+    <div class="focus-card">
+      <div class="focus-icon">🏦</div>
+      <h3>Banking & Finance</h3>
+      <p>Location intelligence for branch planning, agricultural credit risk, property valuation, and geo-enabled financial inclusion.</p>
+      <span class="focus-tag">Geo-Finance</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label">What We Do</p>
+  <h2 class="section-title">Our <em>Services</em></h2>
+  <p class="section-desc">From custom software development to field sensor networks, we deliver end-to-end geospatial solutions.</p>
+  <div class="services-layout">
+    <div class="service-list">
+      <div class="service-item">
+        <span class="service-num">01</span>
+        <div class="service-info">
+          <h3>Geospatial Software Development</h3>
+          <p>Custom GIS applications, spatial databases, and analytical platforms built to your workflow.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-num">02</span>
+        <div class="service-info">
+          <h3>Web & Mobile Applications</h3>
+          <p>Interactive mapping apps, dashboards, and field data collection tools for web and mobile platforms.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-num">03</span>
+        <div class="service-info">
+          <h3>Remote Sensing & Image Analysis</h3>
+          <p>Processing and interpreting satellite, UAV, and aerial imagery into value-added geospatial products.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-num">04</span>
+        <div class="service-info">
+          <h3>Sensor Network Data Systems</h3>
+          <p>End-to-end IoT sensor deployment, data collection pipelines, and real-time dissemination platforms.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <span class="service-num">05</span>
+        <div class="service-info">
+          <h3>Analytical & Decision Tools</h3>
+          <p>Spatial analytics engines, predictive models, and decision-support dashboards for planners and policymakers.</p>
+        </div>
+      </div>
+    </div>
+    <div class="service-visual">
+      <h3>Why Geospatial?</h3>
+      <p>Nearly 80% of all data has a location component. Harnessing that spatial context transforms raw data into precise, actionable intelligence — allowing organizations to understand patterns, allocate resources efficiently, and forecast change.</p>
+      <div class="service-features">
+        <div class="service-feat">Location-aware insights for every domain</div>
+        <div class="service-feat">Real-time monitoring & alerting systems</div>
+        <div class="service-feat">Scalable cloud-based spatial infrastructure</div>
+        <div class="service-feat">Integration with open data (ISRO, NASA, ESA)</div>
+        <div class="service-feat">Custom APIs and data delivery pipelines</div>
+        <div class="service-feat">Multi-scale: field to national level analysis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <p class="section-label">Our Products</p>
+  <h2 class="section-title">Value-Added <em>Geospatial Products</em></h2>
+  <p class="section-desc">Curated data products and analytics platforms built from remotely sensed and sensor data.</p>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-icon">🌾</div>
+        <div>
+          <h3>AgriSense Platform</h3>
+          <span>Precision Agriculture Intelligence</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <p>A web-based precision agriculture tool delivering crop health indices (NDVI, EVI), sowing advisories, irrigation scheduling, and yield forecasts using multi-temporal satellite data.</p>
+        <div class="product-tags">
+          <span class="tag">NDVI Mapping</span><span class="tag">Crop Forecast</span><span class="tag">Web App</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-icon">💧</div>
+        <div>
+          <h3>AquaMap</h3>
+          <span>Water Resource Monitoring Suite</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <p>Integrated hydrological monitoring platform combining satellite-derived water indices, in-situ sensor data, and predictive flood/drought models for river basin management.</p>
+        <div class="product-tags">
+          <span class="tag">Flood Prediction</span><span class="tag">IoT Sensors</span><span class="tag">Dashboard</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-icon">🏙️</div>
+        <div>
+          <h3>UrbanPulse Analytics</h3>
+          <span>Smart Urban Intelligence</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <p>Spatio-temporal analytics engine for urban planners — tracking land use change, urban heat islands, population density shifts, and infrastructure gaps using time-series imagery.</p>
+        <div class="product-tags">
+          <span class="tag">Land Use</span><span class="tag">Time Series</span><span class="tag">Mobile App</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-icon">🌲</div>
+        <div>
+          <h3>ForestWatch</h3>
+          <span>Forest & Biodiversity Monitor</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <p>Near-real-time forest monitoring product using SAR and optical satellite imagery for deforestation alerts, biomass estimation, and tree canopy change detection.</p>
+        <div class="product-tags">
+          <span class="tag">SAR Analysis</span><span class="tag">Alerts</span><span class="tag">API Access</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-icon">🏦</div>
+        <div>
+          <h3>GeoCredit Intelligence</h3>
+          <span>Location Analytics for Banking</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <p>Geo-enabled credit risk platform integrating land use, crop health, weather indices, and infrastructure data to support agricultural lending and rural financial inclusion.</p>
+        <div class="product-tags">
+          <span class="tag">Credit Risk</span><span class="tag">Farm Mapping</span><span class="tag">FinTech GIS</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-icon">📡</div>
+        <div>
+          <h3>SensorGrid Network</h3>
+          <span>IoT Environmental Monitoring</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <p>End-to-end sensor network platform for deploying, managing, and visualizing environmental monitoring nodes — air quality, soil moisture, water levels, and microclimate parameters.</p>
+        <div class="product-tags">
+          <span class="tag">IoT</span><span class="tag">Real-time</span><span class="tag">Open Data API</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <p class="section-label">Why Vasudha</p>
+  <h2 class="section-title">Built for <em>precision & impact</em></h2>
+  <p class="section-desc">We combine deep domain expertise with cutting-edge technology to deliver solutions that truly matter.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">7<span>+</span></div>
+      <h3>Domains Covered</h3>
+      <p>From agriculture to banking, we apply geospatial intelligence across every critical sector.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">∞</div>
+      <h3>Scalable Architecture</h3>
+      <p>Cloud-native platforms designed to scale from village-level to national deployments.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">100<span>%</span></div>
+      <h3>Spatial-First Approach</h3>
+      <p>Every solution is built with location as the core organizing principle of data and analysis.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">24<span>/7</span></div>
+      <h3>Monitoring & Support</h3>
+      <p>Continuous satellite monitoring pipelines and dedicated support for operational deployments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <p class="section-label">The People</p>
+  <h2 class="section-title">Our <em>Expert Team</em></h2>
+  <p class="section-desc">A multidisciplinary team of geospatial scientists, engineers, and domain specialists united by a passion for data-driven impact.</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="avatar">VG</div>
+      <h3>Founder & CEO</h3>
+      <p class="role">Geospatial Strategy & Vision</p>
+      <p class="bio">Leading the mission to harness geospatial technology for real-world impact across agriculture, environment, and urban systems.</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar">RS</div>
+      <h3>Head of Remote Sensing</h3>
+      <p class="role">Satellite Image Analysis</p>
+      <p class="bio">Expert in multi-spectral satellite data processing, land cover classification, and time-series change detection.</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar">PK</div>
+      <h3>Lead Software Engineer</h3>
+      <p class="role">GIS Application Development</p>
+      <p class="bio">Architect of scalable geospatial web platforms, REST APIs, and real-time data processing systems using modern cloud infrastructure.</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar">AM</div>
+      <h3>GIS Analyst</h3>
+      <p class="role">Spatial Data & Analytics</p>
+      <p class="bio">Specializes in spatial modeling, GIS database management, and producing cartographic and analytical deliverables for clients.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Let's build something <em>meaningful</em></h2>
+      <p class="section-desc">Whether you have a specific project in mind or just want to explore what geospatial intelligence can do for your organization, we'd love to hear from you.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <div>
+          <h4>Location</h4>
+          <p>Vijayawada, Andhra Pradesh, India</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">✉️</div>
+        <div>
+          <h4>Email</h4>
+          <a href="mailto:info@vasudha-geo.com">info@vasudha-geo.com</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🌐</div>
+        <div>
+          <h4>Website</h4>
+          <a href="#">www.vasudha-geo.com</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📞</div>
+        <div>
+          <h4>Phone</h4>
+          <p>+91 XXXXX XXXXX</p>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" placeholder="Your first name" />
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" placeholder="Your last name" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="you@organization.com" />
+      </div>
+      <div class="form-group">
+        <label for="org">Organization</label>
+        <input type="text" id="org" placeholder="Your organization" />
+      </div>
+      <div class="form-group">
+        <label for="interest">Area of Interest</label>
+        <select id="interest">
+          <option value="">Select a focus area...</option>
+          <option>Agriculture</option>
+          <option>Water Resources</option>
+          <option>Forest Systems</option>
+          <option>Public Health</option>
+          <option>Climate Change</option>
+          <option>Urban & Rural Systems</option>
+          <option>Banking & Finance</option>
+          <option>Custom Software Development</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Tell us about your project or query..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="handleSubmit()">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="display:inline-flex; margin-bottom: 0.5rem;">
+        <div class="logo-mark">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="11" r="9" stroke="#88c994" stroke-width="1.5"/>
+            <circle cx="11" cy="11" r="5.5" stroke="#88c994" stroke-width="1.5"/>
+            <circle cx="11" cy="11" r="2" fill="#88c994"/>
+            <line x1="11" y1="2" x2="11" y2="4" stroke="#5aaa69" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="11" y1="18" x2="11" y2="20" stroke="#5aaa69" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="2" y1="11" x2="4" y2="11" stroke="#5aaa69" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="18" y1="11" x2="20" y2="11" stroke="#5aaa69" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <strong>Vasudha</strong>
+          <span>Geoanalytics</span>
+        </div>
+      </a>
+      <p class="footer-desc">Geospatial intelligence for agriculture, water, forests, public health, climate, urban systems, and banking — powered by satellite data, IoT sensors, and advanced analytics.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" title="LinkedIn">in</a>
+        <a href="#" class="social-link" title="Twitter">𝕏</a>
+        <a href="#" class="social-link" title="GitHub">⌥</a>
+        <a href="#" class="social-link" title="ResearchGate">R</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Software Development</a></li>
+        <li><a href="#services">Web & Mobile Apps</a></li>
+        <li><a href="#services">Remote Sensing</a></li>
+        <li><a href="#services">Sensor Networks</a></li>
+        <li><a href="#services">Analytics Tools</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Focus Areas</h4>
+      <ul>
+        <li><a href="#focus">Agriculture</a></li>
+        <li><a href="#focus">Water Resources</a></li>
+        <li><a href="#focus">Forest Systems</a></li>
+        <li><a href="#focus">Public Health</a></li>
+        <li><a href="#focus">Urban Systems</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Vasudha Geoanalytics Pvt. Ltd. All rights reserved.</p>
+    <p>
+      <a href="#" style="color:var(--earth-600); text-decoration:none; margin-right:1.5rem;">Privacy Policy</a>
+      <a href="#" style="color:var(--earth-600); text-decoration:none;">Terms of Service</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(el) {
+    const links = document.querySelector('.nav-links');
+    const isOpen = links.style.display === 'flex';
+    links.style.display = isOpen ? 'none' : 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '70px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'rgba(13,31,14,0.97)';
+    links.style.padding = '1.5rem 5%';
+    links.style.gap = '1.25rem';
+    links.style.borderBottom = '1px solid rgba(90,170,105,0.15)';
+  }
+
+  function handleSubmit() {
+    const email = document.getElementById('email').value;
+    const name = document.getElementById('fname').value;
+    if (!email || !name) {
+      alert('Please fill in your name and email to continue.');
+      return;
+    }
+    const btn = document.querySelector('.btn-submit');
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = 'var(--teal-600)';
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+    }, 3000);
+  }
+
+  // Intersection Observer for scroll-triggered fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.focus-card, .product-card, .team-card, .why-card, .pillar').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
